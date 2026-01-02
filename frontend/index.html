@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Ikigai Stress & Productivity Checker</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6f8;
+      padding: 40px;
+    }
+    .container {
+      max-width: 400px;
+      margin: auto;
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+    }
+    input, button {
+      width: 100%;
+      margin: 8px 0;
+      padding: 8px;
+    }
+    button {
+      background: #4f46e5;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    h2 {
+      text-align: center;
+    }
+    .result {
+      margin-top: 15px;
+      background: #eef2ff;
+      padding: 10px;
+      border-radius: 6px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h2>Ikigai Checker</h2>
+
+  <input type="number" id="sleep" placeholder="Sleep hours">
+  <input type="number" id="study" placeholder="Study hours">
+  <input type="number" id="screen" placeholder="Screen time (hrs)">
+  <input type="number" id="activity" placeholder="Activity (mins)">
+  <input type="number" id="mood" placeholder="Mood (1–5)">
+
+  <button onclick="analyze()">Analyze</button>
+
+  <div class="result" id="output"></div>
+</div>
+
+<script>
+async function analyze() {
+  const data = {
+    sleep: Number(document.getElementById("sleep").value),
+    study: Number(document.getElementById("study").value),
+    screen: Number(document.getElementById("screen").value),
+    activity: Number(document.getElementById("activity").value),
+    mood: Number(document.getElementById("mood").value)
+  };
+
+  const stressRes = await fetch("http://127.0.0.1:5000/predict", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data)
+  });
+  const stressData = await stressRes.json();
+
+  const ikigaiRes = await fetch("http://127.0.0.1:5000/ikigai", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data)
+  });
+  const ikigaiData = await ikigaiRes.json();
+
+  document.getElementById("output").innerHTML = `
+    <b>Stress Level:</b> ${stressData.predicted_stress}<br><br>
+    <b>Ikigai Score:</b> ${ikigaiData.ikigai_score}<br>
+    ❤️ Love: ${ikigaiData.pillars.love}<br>
+    💪 Good At: ${ikigaiData.pillars.good_at}<br>
+    🌍 Need: ${ikigaiData.pillars.need}<br>
+    💼 Value: ${ikigaiData.pillars.value}
+  `;
+}
+</script>
+
+</body>
+</html>
