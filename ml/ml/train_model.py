@@ -5,7 +5,8 @@ from sklearn.tree import DecisionTreeClassifier
 import pickle
 
 # Load dataset
-data = pd.read_csv("../data/mental_health_data.csv")
+data = pd.read_csv("../../data/data/mental_health_data.csv")
+
 
 # Encode target labels
 label_encoder = LabelEncoder()
