@@ -34,7 +34,10 @@ College and university students (18–25 years)
 Students facing academic pressure and screen overuse
 
 *flowchart:*
+
 ![alt text]({72E593AD-6016-424C-8CD9-CB48B7489372}.png)
+
+
 Student → Web Frontend → Flask Backend → ML Model → Dashboard
 “The student enters daily habit data through the React frontend.
 The frontend sends this data as JSON to a Flask backend, which calls a machine learning model trained on CSV data to predict stress levels.
