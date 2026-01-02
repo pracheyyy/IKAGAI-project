@@ -146,13 +146,13 @@ Overall, this project demonstrates how responsible data science and human-center
 🟢 Opening (20–30 seconds)
 
 Hello everyone.
-Today I’m presenting our project called Ikigai-Based Mental Health & Productivity Correlator for Students.
+Today I’m presenting my project called Ikigai-Based Mental Health & Productivity Correlator for Students.
 
 The core problem we address is that students’ mental health issues often remain unnoticed until they turn into burnout or serious stress, especially during exams. Most existing solutions are reactive or medical in nature, whereas students need an early, preventive awareness system.
 
 🟢 What the System Does (30 seconds)
 
-Our system is a web-based application that analyzes students’ daily habits such as sleep hours, study time, screen usage, physical activity, and mood.
+my system is a web-based application that analyzes students’ daily habits such as sleep hours, study time, screen usage, physical activity, and mood.
 
 Using data science and machine learning, it predicts stress risk, calculates productivity, and visualizes Ikigai balance, which represents harmony between well-being and effort.
 
