@@ -96,4 +96,4 @@ The Ikigai-Based Mental Health & Productivity Correlator for Students demonstrat
 By focusing on explainability, ethics, and prevention, rather than diagnosis, the project offers a scalable foundation for future educational and wellness platforms that aim to help students build sustainable, balanced routines.
 
 🤝 Contributors
-Prachi Patil (@pracheyy, @pracheyyy)
+Prachi Patil (@pracheyyy)
