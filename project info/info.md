@@ -130,39 +130,29 @@ If sleep < 3 hours AND screen time > 6 hours → Stress = High
 
 These rules ensure the system never underestimates potential risk
 
-🏁 *Conclusion*
-
-The Ikigai-Based Mental Health & Productivity Correlator for Students presents a preventive and ethically responsible approach to student well-being by integrating behavioral data analysis with the Ikigai framework. Instead of attempting medical diagnosis, the system focuses on identifying early risk patterns associated with stress, imbalance, and burnout in students’ daily routines.
-
-By transforming routine behavioral inputs—such as sleep patterns, study hours, screen time, physical activity, and self-reported mood—into explainable scores, the platform provides students with meaningful insights into their mental and productivity balance. The layered scoring methodology ensures transparency, while the combination of rule-based logic and machine learning enables both adaptability and safety.
-
-Most importantly, the inclusion of the Ikigai framework encourages students to view productivity and mental health not as opposing forces, but as interconnected dimensions of a balanced life. This approach promotes self-awareness, sustainable habits, and long-term well-being rather than short-term performance optimization.
-
-Overall, this project demonstrates how responsible data science and human-centered design can be applied to mental health–adjacent problems, offering a scalable foundation for future educational and wellness platforms aimed at proactive student support.
-
 
 **EXPLAINATION**
 
-🟢 Opening (20–30 seconds)
+🟢 Opening 
 
 Hello everyone.
 Today I’m presenting my project called Ikigai-Based Mental Health & Productivity Correlator for Students.
 
 The core problem we address is that students’ mental health issues often remain unnoticed until they turn into burnout or serious stress, especially during exams. Most existing solutions are reactive or medical in nature, whereas students need an early, preventive awareness system.
 
-🟢 What the System Does (30 seconds)
+🟢 What the System Does 
 
 my system is a web-based application that analyzes students’ daily habits such as sleep hours, study time, screen usage, physical activity, and mood.
 
 Using data science and machine learning, it predicts stress risk, calculates productivity, and visualizes Ikigai balance, which represents harmony between well-being and effort.
 
-🟢 Live Input Explanation (30 seconds)
+🟢 Live Input Explanation 
 
 Here on the screen, a student enters their daily routine data — for example, how many hours they slept, studied, how much screen time they had, whether they exercised, and their current mood.
 
 These inputs are intentionally simple so that students can use the system daily without effort.
 
-🟢 Behind-the-Scenes Logic (40–45 seconds)
+🟢 Behind-the-Scenes Logic 
 
 Internally, the system works in three layers.
 
@@ -172,7 +162,7 @@ Second, we apply weighted scoring, where factors like sleep and mood have more i
 
 Third, a machine learning model supports the system by identifying stress patterns, but the final output always passes through rule-based safety checks to avoid underestimating risk.
 
-🟢 Ikigai Integration (30–40 seconds)
+🟢 Ikigai Integration 
 
 What makes our solution unique is the integration of the Ikigai framework.
 
@@ -180,25 +170,35 @@ We translate Ikigai’s four pillars — what you love, what you are good at, wh
 
 This allows students to see not just how stressed they are, but why their routine may be imbalanced.
 
-🟢 Output & Insights (30 seconds)
+🟢 Output & Insights 
 
 Based on the analysis, the dashboard displays the student’s stress risk level, productivity score, and overall Ikigai balance.
 
 The system also provides personalized suggestions, such as improving sleep consistency, reducing screen time, or adding physical activity, to help restore balance.
 
-🟢 Ethical Note (IMPORTANT – 15 seconds)
+🟢 Ethical Note 
 
 It’s important to note that this system does not diagnose mental health conditions.
 
 It is designed purely for awareness, self-reflection, and early prevention, and does not replace professional medical advice.
 
-🟢 Closing (15–20 seconds)
+🟢 Closing 
 
 In conclusion, this project demonstrates how responsible data science and human-centered design can be used to support student well-being proactively.
 
 The solution is scalable, ethical, and can be extended for colleges, learning platforms, or wellness programs in the future.
 
 Thank you.
+
+**🏁 Conclusion**
+
+The Ikigai-Based Mental Health & Productivity Correlator for Students presents a preventive and ethically responsible approach to student well-being by integrating behavioral data analysis with the Ikigai framework. Instead of attempting medical diagnosis, the system focuses on identifying early risk patterns associated with stress, imbalance, and burnout in students’ daily routines.
+
+By transforming routine behavioral inputs—such as sleep patterns, study hours, screen time, physical activity, and self-reported mood—into explainable scores, the platform provides students with meaningful insights into their mental and productivity balance. The layered scoring methodology ensures transparency, while the combination of rule-based logic and machine learning enables both adaptability and safety.
+
+Most importantly, the inclusion of the Ikigai framework encourages students to view productivity and mental health not as opposing forces, but as interconnected dimensions of a balanced life. This approach promotes self-awareness, sustainable habits, and long-term well-being rather than short-term performance optimization.
+
+Overall, this project demonstrates how responsible data science and human-centered design can be applied to mental health–adjacent problems, offering a scalable foundation for future educational and wellness platforms aimed at proactive student support.
 
 **🎯 1-Minute Judging Pitch**
 
@@ -217,41 +217,35 @@ Overall, our project demonstrates how responsible data science can proactively s
 
 Thank you.”
 
-**🧑‍⚖️ Judge Q&A – Strong, Safe, Confident Answers**
+**🧑‍⚖️ Q&A **
 
 ❓ Q1. How accurate is your model?
 “Mental health is complex and subjective, so we do not claim diagnostic accuracy.
 Our system focuses on risk indication, not diagnosis.
 The model provides consistent and explainable outputs, which are combined with rule-based safety checks to avoid underestimating stress.”
-💡 Shows honesty, ethics, and maturity.
 
 ❓ Q2. Is this a mental health diagnostic tool?
 “No. This system does not diagnose mental health conditions.
 It is designed for awareness, self-reflection, and early prevention.
 We clearly state this disclaimer and avoid medical claims.”
-💡 Judges LOVE clear boundaries.
 
 ❓ Q3. Why did you use Ikigai? Isn’t it philosophical?
 “Ikigai is traditionally philosophical, but we operationalized it using measurable behavioral indicators.
 This allows us to translate abstract well-being concepts into actionable, data-driven insights for students.”
-🔥 This shows innovation + thinking.
 
 ❓ Q4. Why not use a deep learning model?
 “For mental health–adjacent applications, explainability and safety are more important than complexity.
 Simple, interpretable models combined with rule-based logic are more responsible and suitable for early-risk systems.”
-🎯 Mature engineering thinking.
 
 ❓ Q5. How did you decide the scoring weights?
 “Weights were chosen conservatively based on common psychological findings where sleep and mood have stronger influence on stress than screen time or activity.
 The system is designed to be tunable and adjustable with real-world feedback.”
-💡 Shows flexibility and grounding.
 
 ❓ Q6. What if the user enters incorrect or fake data?
 “Since inputs are self-reported, we treat results as approximate indicators rather than facts.
 The system focuses on patterns over time rather than single-day predictions, reducing the impact of occasional incorrect inputs.”
 
 ❓ Q7. Can this replace a counselor or psychologist?
-❌ Never say yes.
 “No. This system is not a replacement for professional care.
 It can only act as an early awareness tool that may encourage students to seek help when needed.”
 
@@ -269,7 +263,6 @@ It can scale from individual students to institutional dashboards, while preserv
 ❓ Q11. What ethical concerns did you consider?
 “We avoided medical claims, ensured explainable logic, added safety overrides, and included clear disclaimers.
 Ethical responsibility was prioritized over claiming high accuracy.”
-🔥 This is a top-tier answer.
 
 ❓ Q12. If the ML model and rules disagree, which one wins?
 “Rule-based safety checks always override the ML output to ensure we never underestimate risk.”
