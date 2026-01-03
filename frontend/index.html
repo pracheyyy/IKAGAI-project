@@ -1,25 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Ikigai Stress & Productivity Checker</title>
+  <meta charset="UTF-8" />
+  <title>Ikigai Mental Health Checker</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: #f4f6f8;
-      padding: 40px;
+      background: #f4f6fb;
+      padding: 20px;
     }
     .container {
-      max-width: 400px;
+      max-width: 600px;
       margin: auto;
-      background: white;
+      background: #fff;
       padding: 20px;
-      border-radius: 8px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
     input, button {
       width: 100%;
+      padding: 10px;
       margin: 8px 0;
-      padding: 8px;
     }
     button {
       background: #4f46e5;
@@ -27,31 +28,35 @@
       border: none;
       cursor: pointer;
     }
-    h2 {
-      text-align: center;
+    button:hover {
+      background: #4338ca;
     }
-    .result {
-      margin-top: 15px;
+    .card {
       background: #eef2ff;
       padding: 10px;
-      border-radius: 6px;
+      border-radius: 8px;
+      margin-top: 10px;
+    }
+    h3 {
+      margin-top: 20px;
+      color: #333;
     }
   </style>
 </head>
+
 <body>
-
 <div class="container">
-  <h2>Ikigai Checker</h2>
+  <h2>🌱 Ikigai Mental Health Checker</h2>
 
-  <input type="number" id="sleep" placeholder="Sleep hours">
-  <input type="number" id="study" placeholder="Study hours">
-  <input type="number" id="screen" placeholder="Screen time (hrs)">
-  <input type="number" id="activity" placeholder="Activity (mins)">
-  <input type="number" id="mood" placeholder="Mood (1–5)">
+  <input id="sleep" type="number" placeholder="Sleep hours" />
+  <input id="study" type="number" placeholder="Study hours" />
+  <input id="screen" type="number" placeholder="Screen time (hrs)" />
+  <input id="activity" type="number" placeholder="Physical activity (mins)" />
+  <input id="mood" type="number" placeholder="Mood (1–5)" />
 
   <button onclick="analyze()">Analyze</button>
 
-  <div class="result" id="output"></div>
+  <div id="result"></div>
 </div>
 
 <script>
@@ -64,30 +69,47 @@ async function analyze() {
     mood: Number(document.getElementById("mood").value)
   };
 
-  const stressRes = await fetch("http://127.0.0.1:5000/predict", {
+  const response = await fetch("http://127.0.0.1:5000/ikigai", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data)
   });
-  const stressData = await stressRes.json();
 
-  const ikigaiRes = await fetch("http://127.0.0.1:5000/ikigai", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(data)
-  });
-  const ikigaiData = await ikigaiRes.json();
+  const res = await response.json();
 
-  document.getElementById("output").innerHTML = `
-    <b>Stress Level:</b> ${stressData.predicted_stress}<br><br>
-    <b>Ikigai Score:</b> ${ikigaiData.ikigai_score}<br>
-    ❤️ Love: ${ikigaiData.pillars.love}<br>
-    💪 Good At: ${ikigaiData.pillars.good_at}<br>
-    🌍 Need: ${ikigaiData.pillars.need}<br>
-    💼 Value: ${ikigaiData.pillars.value}
+  document.getElementById("result").innerHTML = `
+    <h3>🔹 Behavioral Insights (Normalized Scores)</h3>
+    <div class="card">
+      🛌 Sleep: ${res.layer1_normalized.sleep_score}<br>
+      📚 Study: ${res.layer1_normalized.study_score}<br>
+      📱 Screen: ${res.layer1_normalized.screen_score}<br>
+      🏃 Activity: ${res.layer1_normalized.activity_score}<br>
+      😌 Mood: ${res.layer1_normalized.mood_score}
+    </div>
+
+    <h3>🔹 Stress & Productivity Analysis</h3>
+    <div class="card">
+      🧠 Stress Score: ${res.layer2_scores.stress_score}<br>
+      ⚠️ Stress Level (Rule-based): ${res.layer2_scores.rule_based_stress}<br>
+      📊 Productivity: ${res.layer2_scores.productivity_score}
+    </div>
+
+     <h3>🔹 ML Validation & Safety Checks</h3>
+     <div class="card">
+       🤖 ML Stress Prediction: ${res.layer3_ml_support.ml_predicted_stress}<br>
+       ✅ Final Stress Level: <b>${res.layer3_ml_support.final_stress_level}</b>
+     </div>
+
+    <h3>🌸 Ikigai Balance</h3>
+    <div class="card">
+      ❤️ Love: ${res.layer3_ikigai.love}<br>
+      🎯 Good At: ${res.layer3_ikigai.good_at}<br>
+      🌍 Need: ${res.layer3_ikigai.need}<br>
+      💼 Value: ${res.layer3_ikigai.value}<br><br>
+      ⭐ <b>Ikigai Score: ${res.layer3_ikigai.ikigai_score}</b>
+    </div>
   `;
 }
 </script>
-
 </body>
 </html>
