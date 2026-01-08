@@ -97,3 +97,51 @@ The final **Ikigai Balance Score** reflects overall harmony between effort and w
 
 ## 🧩 System Architecture
 
+1. Student Input (Daily Habits)
+
+2. Web Frontend (Form-based UI)
+
+3. Flask Backend (REST APIs)
+
+4. Behavior Normalization Engine
+
+5. Stress & Productivity Scoring
+
+6. ML Model (Support Only)
+
+7. Rule-Based Ethical Overrides
+
+8. Ikigai Balance Computation
+
+9. Explainable Results Dashboard
+
+Each stage is designed to be transparent, interpretable, and ethically responsible, ensuring users understand how outputs are generated.
+
+---
+
+## 🚀 Future Scope
+- Real-time habit tracking instead of manual input  
+- Personalized long-term well-being recommendations  
+- Integration with wearable health and fitness devices  
+- College-wide anonymous stress analytics dashboards  
+- Longitudinal trend analysis across semesters  
+
+---
+
+## 👤 Target Users
+- College and university students (18–25 years)  
+- Students facing academic pressure, screen overuse, stress, or burnout risk  
+
+---
+
+## 🏁 Conclusion
+The **Ikigai-Based Mental Health & Productivity Correlator for Students** demonstrates how **ethical, explainable, and preventive data science** can proactively support student well-being.
+
+By focusing on **awareness rather than diagnosis**, and combining behavioral science with responsible machine learning, this project provides a scalable foundation for future educational and wellness platforms aimed at building sustainable and balanced student lifestyles.
+
+---
+
+## 🤝 Contributor
+- **Prachi Patil** (@pracheyyy)
+
+
