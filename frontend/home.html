@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Home | Ikigai Dashboard</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: #f5f7fb;
+    }
+
+    /* ---------- NAVBAR ---------- */
+    .navbar {
+      background: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: bold;
+      color: #4f46e5;
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .profile {
+      background: #eef2ff;
+      padding: 8px 14px;
+      border-radius: 20px;
+      font-size: 14px;
+    }
+
+    /* ---------- HERO ---------- */
+    .hero {
+      margin: 30px auto;
+      width: 90%;
+      max-width: 1000px;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+
+    .hero img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+    }
+
+    /* ---------- CONTENT ---------- */
+    .container {
+      width: 90%;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    h2 {
+      margin-top: 30px;
+      margin-bottom: 15px;
+      color: #333;
+    }
+
+    /* ---------- DASHBOARD ---------- */
+    .dashboard {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 14px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    }
+
+    .card h3 {
+      margin: 0;
+      color: #4f46e5;
+    }
+
+    .score {
+      font-size: 32px;
+      font-weight: bold;
+      margin: 10px 0;
+    }
+
+    .tag {
+      font-size: 14px;
+      color: #555;
+    }
+
+    /* ---------- CTA ---------- */
+    .cta {
+      margin: 40px 0;
+      background: linear-gradient(135deg, #4f46e5, #16a34a);
+      color: white;
+      padding: 30px;
+      border-radius: 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .cta h3 {
+      margin: 0;
+    }
+
+    .cta button {
+      background: white;
+      color: #4f46e5;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 10px;
+      font-size: 16px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .cta button:hover {
+      background: #eef2ff;
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+  <div class="logo">🌱 Ikigai</div>
+  <div class="nav-right">
+    <div class="profile">👤 Hi, User</div>
+  </div>
+</div>
+
+<!-- HERO IMAGE -->
+<div class="hero">
+  <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773"
+       alt="Mental well-being" />
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="container">
+
+  <!-- DASHBOARD -->
+  <h2>📊 Your Ikigai Dashboard</h2>
+
+  <div class="dashboard">
+    <div class="card">
+      <h3>Latest Ikigai</h3>
+      <div class="score">78</div>
+      <div class="tag">Balanced 🌸</div>
+    </div>
+
+    <div class="card">
+      <h3>Avg (Last 7)</h3>
+      <div class="score">72</div>
+      <div class="tag">Moderate 🙂</div>
+    </div>
+
+    <div class="card">
+      <h3>Best Score</h3>
+      <div class="score">85</div>
+      <div class="tag">Excellent ⭐</div>
+    </div>
+
+    <div class="card">
+      <h3>Stress Trend</h3>
+      <div class="score">↓</div>
+      <div class="tag">Improving 🧠</div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta">
+    <div>
+      <h3>Check Your Current Ikigai Score</h3>
+      <p>Analyze today’s habits and see how balanced your life is.</p>
+    </div>
+    <button onclick="goToAnalysis()">Analyze Now</button>
+  </div>
+
+</div>
+
+<script>
+function goToAnalysis() {
+  window.location.href = "./index.html";
+}
+</script>
+
+</body>
+</html>
