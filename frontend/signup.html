@@ -61,9 +61,36 @@
 
 <script>
 function goNext() {
+  const name = document.querySelector('input[type="text"]').value;
+  const email = document.querySelector('input[type="email"]').value;
+  const password = document.querySelector('input[type="password"]').value;
+
+  if (!name || !email || !password) {
+    alert("Please fill all fields");
+    return;
+  }
+
+  // Get existing users
+  let users = JSON.parse(localStorage.getItem("ikigai_users")) || [];
+
+  // Check if user already exists
+  const existingUser = users.find(user => user.email === email);
+
+  if (existingUser) {
+    alert("Account already exists. Please login.");
+    window.location.href = "login.html";
+    return;
+  }
+
+  // Save new user
+  users.push({ name, email, password });
+  localStorage.setItem("ikigai_users", JSON.stringify(users));
+
+  alert("Signup successful!");
   window.location.href = "about.html";
 }
 </script>
+
 
 </body>
 </html>

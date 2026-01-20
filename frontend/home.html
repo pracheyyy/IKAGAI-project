@@ -140,7 +140,7 @@
 <div class="navbar">
   <div class="logo">🌱 Ikigai</div>
   <div class="nav-right">
-    <div class="profile">👤 Hi, User</div>
+    <div class="profile" id="profileName"></div>
   </div>
 </div>
 
@@ -194,10 +194,23 @@
 </div>
 
 <script>
-function goToAnalysis() {
-  window.location.href = "./index.html";
-}
+  // Show logged-in user name in navbar
+  const user = JSON.parse(localStorage.getItem("ikigai_current_user"));
+
+  if (user) {
+    document.getElementById("profileName").innerText = `👤 Hi, ${user.name}`;
+  } else {
+    // If no user is logged in, send back to login
+    window.location.href = "login.html";
+  }
+
+  // Navigate to analysis page
+  function goToAnalysis() {
+    window.location.href = "./index.html";
+  }
 </script>
+
+
 
 </body>
 </html>
