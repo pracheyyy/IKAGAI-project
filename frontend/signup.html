@@ -43,16 +43,17 @@
     }
   </style>
 </head>
+
 <body>
 
 <div class="card">
   <h2>🌱 Create Account</h2>
 
-  <input type="text" placeholder="Full Name" required>
-  <input type="email" placeholder="Email" required>
-  <input type="password" placeholder="Password" required>
+  <input id="name" type="text" placeholder="Full Name" required>
+  <input id="email" type="email" placeholder="Email" required>
+  <input id="password" type="password" placeholder="Password" required>
 
-  <button onclick="goNext()">Sign Up</button>
+  <button onclick="signup()">Sign Up</button>
 
   <div class="link">
     Already have an account? <a href="login.html">Login</a>
@@ -60,37 +61,39 @@
 </div>
 
 <script>
-function goNext() {
-  const name = document.querySelector('input[type="text"]').value;
-  const email = document.querySelector('input[type="email"]').value;
-  const password = document.querySelector('input[type="password"]').value;
+function signup() {
+  const name = document.getElementById("name").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const password = document.getElementById("password").value;
 
   if (!name || !email || !password) {
     alert("Please fill all fields");
     return;
   }
 
-  // Get existing users
   let users = JSON.parse(localStorage.getItem("ikigai_users")) || [];
 
-  // Check if user already exists
-  const existingUser = users.find(user => user.email === email);
-
-  if (existingUser) {
+  const exists = users.find(u => u.email === email);
+  if (exists) {
     alert("Account already exists. Please login.");
     window.location.href = "login.html";
     return;
   }
 
-  // Save new user
-  users.push({ name, email, password });
+  users.push({
+    name,
+    email,
+    password,
+    ikigaiHistory: []
+  });
+
   localStorage.setItem("ikigai_users", JSON.stringify(users));
 
-  alert("Signup successful!");
-  window.location.href = "about.html";
+  alert("Signup successful! Please login.");
+  window.location.href = "login.html";
 }
 </script>
 
-
 </body>
 </html>
+

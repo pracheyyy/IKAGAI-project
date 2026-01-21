@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Login | Ikigai</title>
+
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -21,6 +22,7 @@
     }
     h2 {
       text-align: center;
+      margin-bottom: 20px;
     }
     input, button {
       width: 100%;
@@ -33,25 +35,28 @@
       border: none;
       cursor: pointer;
       border-radius: 6px;
+      font-size: 15px;
     }
     button:hover {
       background: #15803d;
     }
     .link {
       text-align: center;
-      margin-top: 12px;
+      margin-top: 15px;
+      font-size: 14px;
     }
   </style>
 </head>
+
 <body>
 
 <div class="card">
   <h2>🔐 Welcome Back</h2>
 
-  <input type="email" placeholder="Email" required>
-  <input type="password" placeholder="Password" required>
+  <input id="email" type="email" placeholder="Email" required>
+  <input id="password" type="password" placeholder="Password" required>
 
-  <button onclick="goNext()">Login</button>
+  <button onclick="login()">Login</button>
 
   <div class="link">
     New here? <a href="signup.html">Create account</a>
@@ -59,17 +64,16 @@
 </div>
 
 <script>
-function goNext() {
-  const email = document.querySelector('input[type="email"]').value;
-  const password = document.querySelector('input[type="password"]').value;
+function login() {
+  const email = document.getElementById("email").value.trim();
+  const password = document.getElementById("password").value;
 
   if (!email || !password) {
     alert("Please enter email and password");
     return;
   }
 
-  let users = JSON.parse(localStorage.getItem("ikigai_users")) || [];
-
+  const users = JSON.parse(localStorage.getItem("ikigai_users")) || [];
   const user = users.find(
     u => u.email === email && u.password === password
   );
@@ -79,17 +83,16 @@ function goNext() {
     return;
   }
 
-  // Save logged-in user
-  localStorage.setItem("ikigai_current_user", JSON.stringify(user));
+  // Save full user session
+  localStorage.setItem(
+    "ikigai_current_user",
+    JSON.stringify(user)
+  );
 
   alert(`Welcome back, ${user.name}!`);
   window.location.href = "about.html";
 }
 </script>
 
-
 </body>
 </html>
-
-
-
