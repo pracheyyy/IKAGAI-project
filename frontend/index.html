@@ -6,22 +6,23 @@
 
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: "Segoe UI", Arial, sans-serif;
       background: #f4f6fb;
       padding: 20px;
     }
 
     .container {
-      max-width: 600px;
+      max-width: 620px;
       margin: auto;
       background: #fff;
       padding: 25px;
-      border-radius: 12px;
+      border-radius: 14px;
       box-shadow: 0 10px 25px rgba(0,0,0,0.1);
     }
 
     h2 {
       text-align: center;
+      margin-bottom: 20px;
     }
 
     input, button {
@@ -36,7 +37,7 @@
       color: white;
       border: none;
       cursor: pointer;
-      border-radius: 8px;
+      border-radius: 10px;
       font-weight: bold;
     }
 
@@ -46,15 +47,20 @@
 
     .card {
       background: #eef2ff;
-      padding: 12px;
-      border-radius: 10px;
-      margin-top: 12px;
-      line-height: 1.6;
+      padding: 14px;
+      border-radius: 12px;
+      margin-top: 14px;
+      line-height: 1.7;
     }
 
     h3 {
       margin-top: 25px;
       color: #333;
+    }
+
+    .guide-btn {
+      margin-top: 20px;
+      background: linear-gradient(135deg, #16a34a, #4f46e5);
     }
   </style>
 </head>
@@ -75,16 +81,15 @@
   <div id="result"></div>
 </div>
 
-<!-- ================== SCRIPT ================== -->
 <script>
-/* 🔒 Protect page: must be logged in */
+/* 🔒 AUTH CHECK */
 const currentUser = JSON.parse(localStorage.getItem("ikigai_current_user"));
 if (!currentUser) {
   alert("Please login first");
   window.location.href = "login.html";
 }
 
-/* 📊 MAIN ANALYZE FUNCTION */
+/* 📊 MAIN ANALYSIS */
 async function analyze() {
   const data = {
     sleep: Number(document.getElementById("sleep").value),
@@ -94,7 +99,6 @@ async function analyze() {
     mood: Number(document.getElementById("mood").value)
   };
 
-  // Basic validation
   if (Object.values(data).some(v => isNaN(v))) {
     alert("Please fill all fields correctly");
     return;
@@ -108,7 +112,19 @@ async function analyze() {
 
   const res = await response.json();
 
-  // ✅ SHOW RESULT
+  /* ✅ SAVE FOR GUIDELINES PAGE */
+  localStorage.setItem(
+    "ikigai_last_result",
+    JSON.stringify({ input: data, result: res })
+  );
+
+  /* ✅ SAVE TO USER HISTORY */
+  saveIkigaiResult(
+    res.layer3_ikigai.ikigai_score,
+    res.layer3_ml_support.final_stress_level
+  );
+
+  /* ✅ DISPLAY RESULT */
   document.getElementById("result").innerHTML = `
     <h3>🔹 Daily Habit Scores</h3>
     <div class="card">
@@ -128,33 +144,22 @@ async function analyze() {
 
     <h3>🌸 Ikigai Balance</h3>
     <div class="card">
-      Love ❤️: ${res.layer3_ikigai.love}<br>
-      Good At 🎯: ${res.layer3_ikigai.good_at}<br>
-      Need 🌍: ${res.layer3_ikigai.need}<br>
-      Value 💼: ${res.layer3_ikigai.value}<br><br>
       ⭐ <b>Ikigai Score: ${res.layer3_ikigai.ikigai_score}</b>
     </div>
-  `;
 
-  // ✅ SAVE RESULT FOR USER
-  saveIkigaiResult(
-    res.layer3_ikigai.ikigai_score,
-    res.layer3_ml_support.final_stress_level
-  );
+    <button class="guide-btn" onclick="goToGuidelines()">
+      🌿 View Personalized Guidelines
+    </button>
+  `;
 }
 
-/* 💾 SAVE RESULT TO LOCAL STORAGE */
+/* 💾 SAVE HISTORY */
 function saveIkigaiResult(score, stress) {
-  const currentUser = JSON.parse(localStorage.getItem("ikigai_current_user"));
-  if (!currentUser) return;
-
   let users = JSON.parse(localStorage.getItem("ikigai_users")) || [];
   const user = users.find(u => u.email === currentUser.email);
   if (!user) return;
 
-  if (!user.ikigaiHistory) {
-    user.ikigaiHistory = [];
-  }
+  if (!user.ikigaiHistory) user.ikigaiHistory = [];
 
   user.ikigaiHistory.push({
     score,
@@ -164,8 +169,14 @@ function saveIkigaiResult(score, stress) {
 
   localStorage.setItem("ikigai_users", JSON.stringify(users));
 }
+
+/* 🔗 NAVIGATION */
+function goToGuidelines() {
+  window.location.href = "guidelines.html";
+}
 </script>
 
 </body>
 </html>
+
 
